@@ -27,4 +27,4 @@ npm start
 
 ---
 
-Projeto criado por um estudante de Ciência de Dados com foco em desenvolvimento fullstack, IA's generativas, machine learning, deep learning, coleta e curadoria de dados.....é tanta coisa que não cabe! T.I é paixão!
+Projeto criado por um estudante de Ciência de Dados com foco em desenvolvimento web e back-end.
