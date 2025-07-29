@@ -28,3 +28,22 @@ npm start
 ---
 
 Projeto criado por um estudante de Ciência de Dados com foco em desenvolvimento web e back-end.
+
+## 📋 Descrição
+
+Descreva aqui o conteúdo desta seção.
+
+
+## 📦 Instalação
+
+Descreva aqui o conteúdo desta seção.
+
+
+## 💻 Uso
+
+Descreva aqui o conteúdo desta seção.
+
+
+## 📄 Licença
+
+Descreva aqui o conteúdo desta seção.
