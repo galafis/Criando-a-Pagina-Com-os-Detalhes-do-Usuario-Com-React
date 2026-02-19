@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/main.js"
+    "start": "node src/index.ts"
   },
   "devDependencies": {
     "typescript": "^5.0.0"
