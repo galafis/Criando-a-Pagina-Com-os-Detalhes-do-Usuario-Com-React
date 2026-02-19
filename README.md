@@ -1,40 +1,62 @@
-# 🧠 Refinando Aplicações com TypeScript
+# Criando a Pagina Com os Detalhes do Usuario Com React
 
-# 🧠 Refining Applications with TypeScript
+<div align="center">
 
-## 🖼️ Imagem Hero / Hero Image
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
-**Nota:** A imagem hero não pôde ser gerada devido a um erro no sistema. Caso seja necessário, uma imagem hero profissional e atraente que represente o projeto pode ser adicionada aqui.
-
-**Note:** The hero image could not be generated due to a system error. If necessary, a professional and attractive hero image representing the project can be added here.
+</div>
 
 ---
 
-Este projeto foi desenvolvido por Gabriel Demetrios Lafis como parte de um desafio prático da **DIO (Digital Innovation One)**, inspirado no repositório oficial da imersão [desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts).
+Este projeto foi desenvolvido por Gabriel Demetrios Lafis como parte de um desafio prático da **DIO (Digital Innovation One)**, aplicando **React** e **TypeScript** para criar uma página de detalhes de usuário com dados dinâmicos e componentes reutilizáveis.
 
-This project was developed by Gabriel Demetrios Lafis as part of a practical challenge from **DIO (Digital Innovation One)**, inspired by the official immersion repository [desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts).
+## 🎯 O Desafio
 
-## 🎯 O Desafio / The Challenge
+Construir uma página de detalhes de usuário em React com TypeScript, praticando componentização, tipagem estática e consumo de dados. O projeto vai além da replicação, adicionando melhorias reais de estrutura, lógica e boas práticas de desenvolvimento.
 
-Refinar e melhorar uma aplicação real com TypeScript, indo além da replicação e adicionando melhorias reais de estrutura, lógica e boas práticas de desenvolvimento.
+## 🛠 Tecnologias Utilizadas
 
-Refine and improve a real application with TypeScript, going beyond replication and adding real improvements in structure, logic, and development best practices.
-
-## 🛠 Tecnologias Utilizadas / Technologies Used
-
+- React
 - TypeScript
 - Node.js
-- Git e GitHub / Git and GitHub
+- Git e GitHub
 
-## 🚀 Repositório Base / Base Repository
+## 🗺️ Hierarquia de Componentes React
+
+```mermaid
+graph TD
+    A[App] --> B[UserDetailsPage]
+
+    B --> C[UserCard]
+    B --> D[UserStats]
+    B --> E[UserRepos]
+
+    C --> C1[Avatar\nimg]
+    C --> C2[UserInfo\nname · login · bio]
+    C --> C3[UserMeta\nlocation · company · blog]
+
+    D --> D1[StatItem\nRepositórios]
+    D --> D2[StatItem\nSeguidores]
+    D --> D3[StatItem\nSeguindo]
+
+    E --> E1[RepoCard\nname · description]
+    E1 --> E1a[RepoMeta\nstars · forks · language]
+
+    B --> F[LoadingSpinner]
+    B --> G[ErrorMessage]
+
+    A -->|Props/State| B
+    B -->|TypeScript\nInterface User| C & D & E
+```
+
+## 🚀 Repositório Base
 
 Projeto inspirado no repositório oficial:
-🔗 [https://github.com/digitalinnovationone/desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts)
+[https://github.com/digitalinnovationone/desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts)
 
-Project inspired by the official repository:
-🔗 [https://github.com/digitalinnovationone/desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts)
-
-## ▶️ Como Executar / How to Run
+## ▶️ Como Executar
 
 ```bash
 npm install
@@ -42,39 +64,130 @@ npm run build
 npm start
 ```
 
----
+## 📋 Descrição
 
-Projeto criado por Gabriel Demetrios Lafis, um estudante de Ciência de Dados com foco em desenvolvimento web e back-end.
+Este repositório contém o código-fonte de uma página de detalhes de usuário construída com React e TypeScript. A aplicação exibe informações detalhadas de um perfil de usuário, incluindo avatar, nome, biografia, estatísticas (repositórios, seguidores, seguindo) e lista de repositórios públicos. A tipagem com TypeScript garante maior segurança e previsibilidade no fluxo de dados entre os componentes.
 
-Project created by Gabriel Demetrios Lafis, a Data Science student focused on web and back-end development.
+## 📦 Instalação
 
-## 📋 Descrição / Description
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/galafis/Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React.git
+   ```
+2. **Navegue até o diretório do projeto:**
+   ```bash
+   cd Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React
+   ```
+3. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-Descreva aqui o conteúdo desta seção.
+## 💻 Uso
 
-Describe the content of this section here.
+```bash
+npm start
+```
 
-## 📦 Instalação / Installation
+Acesse `http://localhost:3000` no navegador para visualizar a aplicação. A página exibirá os detalhes do usuário com todos os componentes React tipados e organizados em hierarquia.
 
-Descreva aqui o conteúdo desta seção.
+## 📄 Licença
 
-Describe the content of this section here.
-
-## 💻 Uso / Usage
-
-Descreva aqui o conteúdo desta seção.
-
-Describe the content of this section here.
-
-## 📄 Licença / License
-
-Descreva aqui o conteúdo desta seção.
-
-Describe the content of this section here.
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
 
 ---
 
 **Autor:** Gabriel Demetrios Lafis
 
-**Author:** Gabriel Demetrios Lafis
+---
 
+# Creating the User Details Page with React
+
+This project was developed by Gabriel Demetrios Lafis as part of a practical challenge from **DIO (Digital Innovation One)**, applying **React** and **TypeScript** to build a user details page with dynamic data and reusable components.
+
+## 🎯 The Challenge
+
+Build a user details page in React with TypeScript, practicing componentization, static typing, and data consumption. The project goes beyond replication, adding real improvements in structure, logic, and development best practices.
+
+## 🛠 Technologies Used
+
+- React
+- TypeScript
+- Node.js
+- Git and GitHub
+
+## 🗺️ React Component Hierarchy
+
+```mermaid
+graph TD
+    A[App] --> B[UserDetailsPage]
+
+    B --> C[UserCard]
+    B --> D[UserStats]
+    B --> E[UserRepos]
+
+    C --> C1[Avatar\nimg]
+    C --> C2[UserInfo\nname · login · bio]
+    C --> C3[UserMeta\nlocation · company · blog]
+
+    D --> D1[StatItem\nRepositories]
+    D --> D2[StatItem\nFollowers]
+    D --> D3[StatItem\nFollowing]
+
+    E --> E1[RepoCard\nname · description]
+    E1 --> E1a[RepoMeta\nstars · forks · language]
+
+    B --> F[LoadingSpinner]
+    B --> G[ErrorMessage]
+
+    A -->|Props/State| B
+    B -->|TypeScript\nInterface User| C & D & E
+```
+
+## 🚀 Base Repository
+
+Project inspired by the official repository:
+[https://github.com/digitalinnovationone/desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts)
+
+## ▶️ How to Run
+
+```bash
+npm install
+npm run build
+npm start
+```
+
+## 📋 Description
+
+This repository contains the source code for a user details page built with React and TypeScript. The application displays detailed information of a user profile, including avatar, name, bio, statistics (repositories, followers, following), and a list of public repositories. TypeScript typing ensures greater safety and predictability in the data flow between components.
+
+## 📦 Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/galafis/Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+## 💻 Usage
+
+```bash
+npm start
+```
+
+Access `http://localhost:3000` in your browser to view the application. The page will display user details with all React components typed and organized in hierarchy.
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
+
+**Author:** Gabriel Demetrios Lafis
