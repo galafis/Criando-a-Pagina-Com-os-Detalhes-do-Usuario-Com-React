@@ -3,97 +3,93 @@
 <div align="center">
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=for-the-badge&logo=github&logoColor=white)
 
 </div>
 
 ---
 
-Este projeto foi desenvolvido por Gabriel Demetrios Lafis como parte de um desafio prático da **DIO (Digital Innovation One)**, aplicando **React** e **TypeScript** para criar uma página de detalhes de usuário com dados dinâmicos e componentes reutilizáveis.
+## Portugues
 
-## 🎯 O Desafio
+### Visao Geral
 
-Construir uma página de detalhes de usuário em React com TypeScript, praticando componentização, tipagem estática e consumo de dados. O projeto vai além da replicação, adicionando melhorias reais de estrutura, lógica e boas práticas de desenvolvimento.
+Aplicacao React que consome a API publica do GitHub para exibir perfis de usuarios, estatisticas de repositorios e detalhes de contribuicoes. O usuario pode pesquisar qualquer perfil do GitHub e visualizar informacoes detalhadas incluindo avatar, biografia, repositorios publicos, linguagens mais utilizadas, total de estrelas e forks.
 
-## 🛠 Tecnologias Utilizadas
-
-- React
-- TypeScript
-- Node.js
-- Git e GitHub
-
-## 🗺️ Hierarquia de Componentes React
+### Arquitetura
 
 ```mermaid
 graph TD
-    A[App] --> B[UserDetailsPage]
+    A[App] --> B[SearchBar]
+    A --> C[UserProfile]
+    A --> D[UserStats]
+    A --> E[RepoList]
 
-    B --> C[UserCard]
-    B --> D[UserStats]
-    B --> E[UserRepos]
+    B -->|username| F[githubApi Service]
+    F -->|fetch| G[GitHub REST API]
+    G -->|user data| C
+    G -->|repos data| D
+    G -->|repos data| E
 
-    C --> C1[Avatar\nimg]
-    C --> C2[UserInfo\nname · login · bio]
-    C --> C3[UserMeta\nlocation · company · blog]
+    C --> C1[Avatar + Name]
+    C --> C2[Bio + Location]
+    C --> C3[Followers / Following]
 
-    D --> D1[StatItem\nRepositórios]
-    D --> D2[StatItem\nSeguidores]
-    D --> D3[StatItem\nSeguindo]
+    D --> D1[Total Stars / Forks]
+    D --> D2[Language Bar Chart]
 
-    E --> E1[RepoCard\nname · description]
-    E1 --> E1a[RepoMeta\nstars · forks · language]
+    E --> E1[RepoCard]
+    E1 --> E1a[Name + Description]
+    E1 --> E1b[Stars + Forks + Language]
 
-    B --> F[LoadingSpinner]
-    B --> G[ErrorMessage]
-
-    A -->|Props/State| B
-    B -->|TypeScript\nInterface User| C & D & E
+    style A fill:#238636,color:#fff
+    style F fill:#1f6feb,color:#fff
+    style G fill:#6e7681,color:#fff
 ```
 
-## 🚀 Repositório Base
+### Funcionalidades
 
-Projeto inspirado no repositório oficial:
-[https://github.com/digitalinnovationone/desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts)
+- Busca de usuarios pelo nome de usuario do GitHub
+- Exibicao de perfil completo (avatar, nome, bio, empresa, localizacao, blog)
+- Estatisticas agregadas (total de estrelas, forks, repositorios originais, linguagens)
+- Barra visual de linguagens mais utilizadas
+- Grade de repositorios com nome, descricao, linguagem, estrelas e forks
+- Sugestoes de usuarios populares na tela inicial
+- Tratamento de erros (usuario nao encontrado, limite de taxa da API)
+- Interface responsiva com tema escuro inspirado no GitHub
 
-## ▶️ Como Executar
+### Estrutura do Projeto
+
+```
+src/
+  App.jsx                  # Componente principal com gerenciamento de estado
+  index.js                 # Ponto de entrada React
+  components/
+    SearchBar.jsx           # Formulario de busca de usuarios
+    UserProfile.jsx         # Card de perfil do usuario
+    UserStats.jsx           # Estatisticas e barra de linguagens
+    RepoList.jsx            # Grade de repositorios
+  services/
+    githubApi.js            # Servico de comunicacao com a API do GitHub
+public/
+  index.html               # HTML principal
+```
+
+### Como Executar
 
 ```bash
 npm install
-npm run build
 npm start
 ```
 
-## 📋 Descrição
+Acesse `http://localhost:3000` no navegador.
 
-Este repositório contém o código-fonte de uma página de detalhes de usuário construída com React e TypeScript. A aplicação exibe informações detalhadas de um perfil de usuário, incluindo avatar, nome, biografia, estatísticas (repositórios, seguidores, seguindo) e lista de repositórios públicos. A tipagem com TypeScript garante maior segurança e previsibilidade no fluxo de dados entre os componentes.
+### Tecnologias
 
-## 📦 Instalação
-
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/galafis/Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React.git
-   ```
-2. **Navegue até o diretório do projeto:**
-   ```bash
-   cd Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React
-   ```
-3. **Instale as dependências:**
-   ```bash
-   npm install
-   ```
-
-## 💻 Uso
-
-```bash
-npm start
-```
-
-Acesse `http://localhost:3000` no navegador para visualizar a aplicação. A página exibirá os detalhes do usuário com todos os componentes React tipados e organizados em hierarquia.
-
-## 📄 Licença
-
-Este projeto está licenciado sob a Licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
+- **React 18** - Biblioteca de interface de usuario com componentes funcionais e hooks
+- **GitHub REST API** - API publica para dados de usuarios e repositorios
+- **CSS-in-JS** - Estilizacao inline com objetos JavaScript
+- **Fetch API** - Requisicoes HTTP nativas do navegador
 
 ---
 
@@ -101,122 +97,95 @@ Este projeto está licenciado sob a Licença MIT. Consulte o arquivo `LICENSE` p
 
 ---
 
-# Creating the User Details Page with React
+## English
 
-This project was developed by Gabriel Demetrios Lafis as part of a practical challenge from **DIO (Digital Innovation One)**, applying **React** and **TypeScript** to build a user details page with dynamic data and reusable components.
+### Overview
 
-## 🎯 The Challenge
+React application that consumes the public GitHub API to display user profiles, repository statistics, and contribution details. Users can search for any GitHub profile and view detailed information including avatar, bio, public repositories, most used languages, total stars, and forks.
 
-Build a user details page in React with TypeScript, practicing componentization, static typing, and data consumption. The project goes beyond replication, adding real improvements in structure, logic, and development best practices.
-
-## 🛠 Technologies Used
-
-- React
-- TypeScript
-- Node.js
-- Git and GitHub
-
-## 🗺️ React Component Hierarchy
+### Architecture
 
 ```mermaid
 graph TD
-    A[App] --> B[UserDetailsPage]
+    A[App] --> B[SearchBar]
+    A --> C[UserProfile]
+    A --> D[UserStats]
+    A --> E[RepoList]
 
-    B --> C[UserCard]
-    B --> D[UserStats]
-    B --> E[UserRepos]
+    B -->|username| F[githubApi Service]
+    F -->|fetch| G[GitHub REST API]
+    G -->|user data| C
+    G -->|repos data| D
+    G -->|repos data| E
 
-    C --> C1[Avatar\nimg]
-    C --> C2[UserInfo\nname · login · bio]
-    C --> C3[UserMeta\nlocation · company · blog]
+    C --> C1[Avatar + Name]
+    C --> C2[Bio + Location]
+    C --> C3[Followers / Following]
 
-    D --> D1[StatItem\nRepositories]
-    D --> D2[StatItem\nFollowers]
-    D --> D3[StatItem\nFollowing]
+    D --> D1[Total Stars / Forks]
+    D --> D2[Language Bar Chart]
 
-    E --> E1[RepoCard\nname · description]
-    E1 --> E1a[RepoMeta\nstars · forks · language]
+    E --> E1[RepoCard]
+    E1 --> E1a[Name + Description]
+    E1 --> E1b[Stars + Forks + Language]
 
-    B --> F[LoadingSpinner]
-    B --> G[ErrorMessage]
-
-    A -->|Props/State| B
-    B -->|TypeScript\nInterface User| C & D & E
+    style A fill:#238636,color:#fff
+    style F fill:#1f6feb,color:#fff
+    style G fill:#6e7681,color:#fff
 ```
 
-## 🚀 Base Repository
+### Features
 
-Project inspired by the official repository:
-[https://github.com/digitalinnovationone/desafio03-ts](https://github.com/digitalinnovationone/desafio03-ts)
+- Search users by GitHub username
+- Complete profile display (avatar, name, bio, company, location, blog)
+- Aggregated statistics (total stars, forks, original repos, languages)
+- Visual language usage bar
+- Repository grid with name, description, language, stars, and forks
+- Popular user suggestions on the home screen
+- Error handling (user not found, API rate limit)
+- Responsive interface with GitHub-inspired dark theme
 
-## ▶️ How to Run
+### Project Structure
+
+```
+src/
+  App.jsx                  # Main component with state management
+  index.js                 # React entry point
+  components/
+    SearchBar.jsx           # User search form
+    UserProfile.jsx         # User profile card
+    UserStats.jsx           # Statistics and language bar
+    RepoList.jsx            # Repository grid
+  services/
+    githubApi.js            # GitHub API communication service
+public/
+  index.html               # Main HTML
+```
+
+### How to Run
 
 ```bash
 npm install
-npm run build
 npm start
 ```
 
-## 📋 Description
+Open `http://localhost:3000` in your browser.
 
-This repository contains the source code for a user details page built with React and TypeScript. The application displays detailed information of a user profile, including avatar, name, bio, statistics (repositories, followers, following), and a list of public repositories. TypeScript typing ensures greater safety and predictability in the data flow between components.
+### Technologies
 
-## 📦 Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/galafis/Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React.git
-   ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React
-   ```
-3. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-## 💻 Usage
-
-```bash
-npm start
-```
-
-Access `http://localhost:3000` in your browser to view the application. The page will display user details with all React components typed and organized in hierarchy.
-
-## 📄 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+- **React 18** - UI library with functional components and hooks
+- **GitHub REST API** - Public API for user and repository data
+- **CSS-in-JS** - Inline styling with JavaScript objects
+- **Fetch API** - Native browser HTTP requests
 
 ---
 
 **Author:** Gabriel Demetrios Lafis
 
-
 ---
 
-## English
-
-### Overview
-
-Criando a Pagina Com os Detalhes do Usuario Com React - A project built with TypeScript, React, Node.js, developed by Gabriel Demetrios Lafis as part of professional portfolio and continuous learning in Data Science and Software Engineering.
-
-### Key Features
-
-This project demonstrates practical application of modern development concepts including clean code architecture, responsive design patterns, and industry-standard best practices. The implementation showcases real-world problem solving with production-ready code quality.
-
-### How to Run
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/galafis/Criando-a-Pagina-Com-os-Detalhes-do-Usuario-Com-React.git
-   ```
-2. Follow the setup instructions in the Portuguese section above.
-
-### License
+## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
 
 Developed by [Gabriel Demetrios Lafis](https://github.com/galafis)
